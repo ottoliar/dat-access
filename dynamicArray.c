@@ -140,7 +140,6 @@ void addDynArr(DynArr *v, TYPE val)
 {
 
 	assert(v != 0);
-	assert(v->data != 0);
 
 	//If max capacity is reached, a new array will have to be created
 	if (sizeDynArr(v) >= v->capacity)
@@ -170,8 +169,7 @@ TYPE getDynArr(DynArr *v, int pos)
 
 	//Assert v is not pointing to NULL & is not empty
 	assert(v != 0);
-	assert(v->data != 0);
-    assert(sizeDynArr(v) != 0);
+    assert(!isEmptyDynArr(v));
 	//Assert position is valid in the array
 	assert(pos >= 0 && pos < sizeDynArr(v));
 
@@ -195,8 +193,7 @@ void putDynArr(DynArr *v, int pos, TYPE val)
 
 	//Assert v is not pointing to NULL & is not empty
 	assert(v != 0);
-	assert(v->data != 0);
-	assert(sizeDynArr(v) != 0);
+	assert(!isEmptyDynArr(v));
 	//Assert position is valid in the array
 	assert(pos >= 0 && pos < sizeDynArr(v));
 
@@ -218,8 +215,7 @@ void swapDynArr(DynArr *v, int i, int  j)
 
 	//Assert v is not pointing to NULL & is not empty
 	assert(v != 0);
-	assert(v->data != 0);
-	assert(sizeDynArr(v) != 0);
+	assert(!isEmptyDynArr(v));
 	//Assert passed integers are valid
 	assert(i >= 0 && j >= 0);
 	assert(i < sizeDynArr(v) && j < sizeDynArr(v));
@@ -249,8 +245,7 @@ void removeAtDynArr(DynArr *v, int idx)
 
 	//Assert v is not pointing to NULL & is not empty
 	assert(v != 0);
-	assert(v->data != 0);
-	assert(sizeDynArr(v) != 0);
+	assert(!isEmptyDynArr(v));
 	//Assert passed index is valid
 	assert(idx < sizeDynArr(v) && idx >= 0);
 
@@ -279,7 +274,6 @@ int isEmptyDynArr(DynArr *v)
 
 	//Assert v is not pointing to NULL
 	assert(v != 0);
-	assert(v->data != 0);
 
 	return(sizeDynArr(v) == 0);
 
@@ -299,7 +293,6 @@ void pushDynArr(DynArr *v, TYPE val)
 
 	//Assert v is not pointing to NULL
 	assert(v != 0);
-	assert(v->data != 0);
 
 	addDynArr(v, val);
 }
@@ -315,7 +308,7 @@ TYPE topDynArr(DynArr *v)
 {
 
 	//Assert v is not null & not empty
-	assert(v != 0 && sizeDynArr(v) != 0);
+	assert(v != 0 && !isEmptyDynArr(v));
 
 	//Get & return value at the top of the stack
 	return getDynArr(v, sizeDynArr(v) - 1);
@@ -333,7 +326,7 @@ void popDynArr(DynArr *v)
 {
 
 	//Assert v is not null & is not empty
-	assert(v != 0 && sizeDynArr(v) != 0);
+	assert(v != 0 && !isEmptyDynArr(v));
 
 	//Remove the value at the top of the stack
 	removeAtDynArr(v, sizeDynArr(v) - 1);
@@ -358,7 +351,7 @@ int containsDynArr(DynArr *v, TYPE val)
 {
 
 	//Assert v is not null & not empty
-	assert(v != 0 && sizeDynArr(v) != 0);
+	assert(v != 0 && !isEmptyDynArr(v));
 
 	//Search the array for the passed value
 	//Return 1 if found, 0 if not
@@ -386,7 +379,7 @@ void removeDynArr(DynArr *v, TYPE val)
 {
 
 	//Assert v is not null & v is not empty
-	assert(v != 0 && sizeDynArr(v) != 0);
+	assert(v != 0 && !isEmptyDynArr(v));
 
 	//Search the array for the specified value
 	int position = -1;
