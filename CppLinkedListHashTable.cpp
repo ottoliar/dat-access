@@ -94,21 +94,3 @@ public:
 		std::cout << "\n";
 	}
 };
-
-int main() {
-	HashMap hash;
-	hash.insert(3, 12);
-	hash.insert(3, 15);
-	hash.insert(3, 60);
-	hash.print(3);
-	hash.insert(1, 5);
-	hash.insert(1, 77);
-	hash.print(1);
-	hash.remove(1);
-	std::cout << "Removing from 1...\n";
-	hash.print(1);
-	if (hash.search(1)) {
-		std::cout << "Something still at one!\n";
-	}
-	return 0;
-}
